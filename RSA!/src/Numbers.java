@@ -14,15 +14,11 @@ public class Numbers {
         tuple2 = gcdWide(b, a.mod(b));
 
         tuple = new Tuple();
-        tuple.d = tuple2.d;
-        tuple.x = tuple2.y;
-        tuple.y = tuple2.x.subtract(a.divide(b).multiply(tuple2.y));
+        tuple.setD(tuple2.getD());
+        tuple.setX(tuple2.getY());
+        tuple.setY(tuple2.getX().subtract(a.divide(b).multiply(tuple2.getY())));
 
         return tuple;
-    }
-
-    public static boolean lessOrEqualsThen(BigInteger left, BigInteger right) {
-        return left.compareTo(right) <= 0;
     }
 
     public static <T extends Number> boolean lessOrEqualsThen(T left, T right) throws IllegalArgumentException {
@@ -92,6 +88,18 @@ public class Numbers {
 
         public BigInteger getY() {
             return y;
+        }
+
+        public void setD(BigInteger d) {
+            this.d = d;
+        }
+
+        public void setX(BigInteger x) {
+            this.x = x;
+        }
+
+        public void setY(BigInteger y) {
+            this.y = y;
         }
     }
 }

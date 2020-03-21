@@ -2,7 +2,6 @@ import java.math.BigInteger;
 
 public class RSA {
     private final static BigInteger one = BigInteger.ONE;
-    private final static int LEFT_LESS = 1;
     private BigInteger privateKey;
     private BigInteger publicKey;
     private BigInteger module;
@@ -18,8 +17,7 @@ public class RSA {
         if (phi.gcd(publicKey).equals(one)) {
             this.module = p.multiply(q);
             this.publicKey = publicKey;
-            //TODO this.privateKey = Numbers.gcdWide(this.publicKey, phi).getX();
-            this.privateKey = this.publicKey.modInverse(phi);
+            this.privateKey = Numbers.gcdWide(this.publicKey, phi).getX();
             this.phi = phi;
             return this.privateKey;
         } else {
